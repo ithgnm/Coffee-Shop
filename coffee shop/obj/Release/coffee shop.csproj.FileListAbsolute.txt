@@ -1,0 +1,13 @@
+D:\coffee shop\coffee shop\bin\Release\coffee shop.exe.config
+D:\coffee shop\coffee shop\bin\Release\coffee shop.exe
+D:\coffee shop\coffee shop\bin\Release\coffee shop.pdb
+D:\coffee shop\coffee shop\obj\Release\coffee shop.csprojAssemblyReference.cache
+D:\coffee shop\coffee shop\obj\Release\coffee_shop.fAdmin.resources
+D:\coffee shop\coffee shop\obj\Release\coffee_shop.fCoffee.resources
+D:\coffee shop\coffee shop\obj\Release\coffee_shop.fLogin.resources
+D:\coffee shop\coffee shop\obj\Release\coffee_shop.fProfile.resources
+D:\coffee shop\coffee shop\obj\Release\coffee_shop.Properties.Resources.resources
+D:\coffee shop\coffee shop\obj\Release\coffee shop.csproj.GenerateResource.cache
+D:\coffee shop\coffee shop\obj\Release\coffee shop.csproj.CoreCompileInputs.cache
+D:\coffee shop\coffee shop\obj\Release\coffee shop.exe
+D:\coffee shop\coffee shop\obj\Release\coffee shop.pdb

@@ -1,0 +1,30 @@
+D:\coffee shop\coffee shop\bin\Debug\coffee shop.exe.config
+D:\coffee shop\coffee shop\bin\Debug\coffee shop.exe
+D:\coffee shop\coffee shop\bin\Debug\coffee shop.pdb
+D:\coffee shop\coffee shop\obj\Debug\coffee shop.csprojAssemblyReference.cache
+D:\coffee shop\coffee shop\obj\Debug\coffee_shop.Properties.Resources.resources
+D:\coffee shop\coffee shop\obj\Debug\coffee shop.csproj.GenerateResource.cache
+D:\coffee shop\coffee shop\obj\Debug\coffee shop.csproj.CoreCompileInputs.cache
+D:\coffee shop\coffee shop\obj\Debug\coffee shop.exe
+D:\coffee shop\coffee shop\obj\Debug\coffee shop.pdb
+D:\coffee shop\coffee shop\obj\Debug\coffee_shop.fAdmin.resources
+D:\coffee shop\coffee shop\obj\Debug\coffee_shop.fCoffee.resources
+D:\coffee shop\coffee shop\obj\Debug\coffee_shop.fLogin.resources
+D:\coffee shop\coffee shop\obj\Debug\coffee_shop.fProfile.resources
+D:\winform coffee shop\coffee shop\bin\Debug\coffee shop.exe.config
+D:\winform coffee shop\coffee shop\bin\Debug\coffee shop.exe
+D:\winform coffee shop\coffee shop\bin\Debug\coffee shop.pdb
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.csprojAssemblyReference.cache
+D:\winform coffee shop\coffee shop\obj\Debug\coffee_shop.fAdmin.resources
+D:\winform coffee shop\coffee shop\obj\Debug\coffee_shop.fCoffee.resources
+D:\winform coffee shop\coffee shop\obj\Debug\coffee_shop.fLogin.resources
+D:\winform coffee shop\coffee shop\obj\Debug\coffee_shop.fProfile.resources
+D:\winform coffee shop\coffee shop\obj\Debug\coffee_shop.Properties.Resources.resources
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.csproj.GenerateResource.cache
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.csproj.CoreCompileInputs.cache
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.exe
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.pdb
+D:\winform coffee shop\coffee shop\bin\Debug\BCrypt.Net.dll
+D:\winform coffee shop\coffee shop\bin\Debug\BCrypt.Net.pdb
+D:\winform coffee shop\coffee shop\bin\Debug\BCrypt.Net.xml
+D:\winform coffee shop\coffee shop\obj\Debug\coffee shop.csproj.CopyComplete
