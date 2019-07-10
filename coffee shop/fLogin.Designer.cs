@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLogin));
             this.pnlLogin = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -35,11 +36,13 @@
             this.lbID = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLogin
             // 
+            this.pnlLogin.Controls.Add(this.btnSetting);
             this.pnlLogin.Controls.Add(this.btnExit);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.lbPassword);
@@ -53,7 +56,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(210, 105);
+            this.btnExit.Location = new System.Drawing.Point(219, 105);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 5;
@@ -63,7 +66,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(120, 105);
+            this.btnLogin.Location = new System.Drawing.Point(129, 105);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 4;
@@ -74,7 +77,7 @@
             // lbPassword
             // 
             this.lbPassword.AutoSize = true;
-            this.lbPassword.Location = new System.Drawing.Point(36, 66);
+            this.lbPassword.Location = new System.Drawing.Point(45, 66);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(56, 13);
             this.lbPassword.TabIndex = 3;
@@ -83,7 +86,7 @@
             // lbID
             // 
             this.lbID.AutoSize = true;
-            this.lbID.Location = new System.Drawing.Point(36, 26);
+            this.lbID.Location = new System.Drawing.Point(45, 26);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(21, 13);
             this.lbID.TabIndex = 2;
@@ -91,7 +94,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(120, 63);
+            this.txtPassword.Location = new System.Drawing.Point(129, 63);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(165, 20);
             this.txtPassword.TabIndex = 1;
@@ -99,10 +102,20 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(120, 23);
+            this.txtID.Location = new System.Drawing.Point(129, 23);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(165, 20);
             this.txtID.TabIndex = 0;
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Location = new System.Drawing.Point(37, 105);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(75, 23);
+            this.btnSetting.TabIndex = 6;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // fLogin
             // 
@@ -113,6 +126,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.pnlLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "fLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -131,6 +145,7 @@
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnSetting;
     }
 }
 

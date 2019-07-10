@@ -1,0 +1,11 @@
+D:\winform coffee shop\data access layer\bin\Debug\data access layer.dll
+D:\winform coffee shop\data access layer\bin\Debug\data access layer.pdb
+D:\winform coffee shop\data access layer\bin\Debug\BCrypt.Net.dll
+D:\winform coffee shop\data access layer\bin\Debug\data transfer object.dll
+D:\winform coffee shop\data access layer\bin\Debug\data transfer object.pdb
+D:\winform coffee shop\data access layer\bin\Debug\BCrypt.Net.xml
+D:\winform coffee shop\data access layer\obj\Debug\data access layer.csprojAssemblyReference.cache
+D:\winform coffee shop\data access layer\obj\Debug\data access layer.csproj.CoreCompileInputs.cache
+D:\winform coffee shop\data access layer\obj\Debug\data access layer.csproj.CopyComplete
+D:\winform coffee shop\data access layer\obj\Debug\data access layer.dll
+D:\winform coffee shop\data access layer\obj\Debug\data access layer.pdb

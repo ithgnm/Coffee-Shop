@@ -1,0 +1,58 @@
+D:\winform coffee shop\graphical user interface\bin\Debug\graphical user interface.exe.config
+D:\winform coffee shop\graphical user interface\bin\Debug\graphical user interface.exe
+D:\winform coffee shop\graphical user interface\bin\Debug\graphical user interface.pdb
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.BonusSkins.v19.1.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Data.v19.1.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Printing.v19.1.Core.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Sparkline.v19.1.Core.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Utils.v19.1.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.XtraEditors.v19.1.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Pdf.v19.1.Core.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Data.v19.1.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Utils.v19.1.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Sparkline.v19.1.Core.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.XtraEditors.v19.1.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Printing.v19.1.Core.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\DevExpress.Pdf.v19.1.Core.xml
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.Data.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.Data.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.Data.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.Data.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.Utils.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.Utils.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.Utils.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.Utils.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.Sparkline.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.Sparkline.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.Sparkline.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.Sparkline.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.XtraEditors.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.XtraEditors.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.XtraEditors.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.XtraEditors.v19.1.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.Printing.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.Printing.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.Printing.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.Printing.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\de\DevExpress.Pdf.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\es\DevExpress.Pdf.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ja\DevExpress.Pdf.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\ru\DevExpress.Pdf.v19.1.Core.resources.dll
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.csprojAssemblyReference.cache
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical_user_interface.coffee.resources
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical_user_interface.Properties.Resources.resources
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.csproj.GenerateResource.cache
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.exe.licenses
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.csproj.CoreCompileInputs.cache
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.csproj.CopyComplete
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.exe
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical user interface.pdb
+D:\winform coffee shop\graphical user interface\obj\Debug\graphical_user_interface.login.resources
+D:\winform coffee shop\graphical user interface\bin\Debug\business logic layer.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\data transfer object.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\data access layer.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\BCrypt.Net.dll
+D:\winform coffee shop\graphical user interface\bin\Debug\business logic layer.pdb
+D:\winform coffee shop\graphical user interface\bin\Debug\data transfer object.pdb
+D:\winform coffee shop\graphical user interface\bin\Debug\data access layer.pdb
+D:\winform coffee shop\graphical user interface\bin\Debug\BCrypt.Net.xml

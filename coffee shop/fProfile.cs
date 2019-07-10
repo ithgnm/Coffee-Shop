@@ -1,5 +1,5 @@
-﻿using coffee_shop.data_access_layer;
-using coffee_shop.data_transfer_object;
+﻿using business_logic_layer;
+using data_transfer_object;
 using System;
 using System.Windows.Forms;
 
@@ -9,6 +9,8 @@ namespace coffee_shop
     {
         private Account loginAccount;
         public Account LoginAccount { get => loginAccount; set { loginAccount = value; changeAccount(loginAccount); } }
+
+        private AccountBLL accBLL = new AccountBLL();
 
         public fProfile(Account account)
         {
@@ -29,7 +31,7 @@ namespace coffee_shop
             string confirm = tbConfirm.Text;
             if (!newPassword.Equals(confirm))
                 MessageBox.Show("Wrong confirm password!");
-            else if (AccountDAO.Instance.updateAccountPassword(userName, password, newPassword))
+            else if (accBLL.updateAccountPassword(userName, password, newPassword))
             {
                 MessageBox.Show("Update complete!");
                 this.Close();

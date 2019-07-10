@@ -12,7 +12,8 @@ create table cftable
 (
 	id int identity primary key,
 	name nvarchar(100) not null,
-	status nvarchar(100) not null default N'Empty'
+	status nvarchar(100) not null default N'Empty',
+	idarea int not null foreign key references dbo.area(id),
 )
 go
 
@@ -244,5 +245,27 @@ begin
 	select @count = count(*) from dbo.billinfo as bi, dbo.bill as b
 	where b.id = bi.idbill and b.id = @idbill and status = 0
 	if (@count = 0) update dbo.cftable set status = N'Empty' where id = @idtable
+end
+go
+
+create table area 
+(
+	id int identity primary key,
+	name nvarchar(100) not null
+)
+
+insert dbo.area values (N'House')
+insert dbo.area values (N'Garden')
+
+alter table cftable add idarea int not null foreign key references dbo.area(id) default 1
+go
+
+begin
+	declare @i int = 10
+	while @i  < 13
+	begin
+		update dbo.cftable set idarea = 2 where id = @i
+		set @i = @i + 1
+	end
 end
 go

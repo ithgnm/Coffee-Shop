@@ -1,5 +1,5 @@
-﻿using coffee_shop.data_access_layer;
-using coffee_shop.data_transfer_object;
+﻿using business_logic_layer;
+using data_transfer_object;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,22 +8,31 @@ namespace coffee_shop
 {
     public partial class fAdmin : Form
     {
-        BindingSource drinkList = new BindingSource();
-        BindingSource categoryList = new BindingSource();
-        BindingSource tableList = new BindingSource();
-        BindingSource accountList = new BindingSource();
+        private BindingSource drinkList = new BindingSource();
+        private BindingSource categoryList = new BindingSource();
+        private BindingSource tableList = new BindingSource();
+        private BindingSource areaList = new BindingSource();
+        private BindingSource accountList = new BindingSource();
+
+        private AccountBLL accBLL = new AccountBLL();
+        private TableBLL tbBLL = new TableBLL();
+        private CategoryBLL cgBLL = new CategoryBLL();
+        private DrinkBLL drBLL = new DrinkBLL();
+        private BillBLL bBLL = new BillBLL();
+        private AreaBLL arBLL = new AreaBLL();
 
         public Account loginAccount;
 
         public fAdmin()
         {
             InitializeComponent();
-            load();
+            loadForm();
         }
 
         #region Methods
-        void load()
+        void loadForm()
         {
+            loadCurrentDateIntoDTP();
             loadListBillByDate(dtpFrom.Value, dtpTo.Value);
             dgvDrink.DataSource = drinkList;
             loadListDrink();
@@ -33,6 +42,10 @@ namespace coffee_shop
             loadListTable();
             loadCategoryIntoCB(cbDrinkCategory);
             loadTableStatusIntoCB(cbTableStatus);
+            dgvArea.DataSource = areaList;
+            loadAreaIntoCB(cbTableArea);
+            loadListArea();
+            addAreaBinding();
             dgvAccount.DataSource = accountList;
             loadListAccount();
             addDrinkBinding();
@@ -42,34 +55,51 @@ namespace coffee_shop
             loadAccountTypeIntoCB(cbAccountType);
         }
 
+        public void loadCurrentDateIntoDTP()
+        {
+            dtpFrom.Value = DateTime.Now;
+            dtpTo.Value = DateTime.Now;
+        }
+
         void loadListBillByDate(DateTime checkin, DateTime checkout)
         {
-            dgvBill.DataSource = BillDAO.Instance.getBillListByDate(checkin, checkout);
+            dgvBill.DataSource = bBLL.getBillListByDate(checkin, checkout);
         }
 
         void loadListDrink()
         {
-            drinkList.DataSource = DrinkDAO.Instance.getListDrink();
+            drinkList.DataSource = drBLL.getListDrink();
         }
 
         void loadListCategory()
         {
-            categoryList.DataSource = CategoryDAO.Instance.getListCategory();
+            categoryList.DataSource = cgBLL.getListCategory();
         }
 
         void loadListTable()
         {
-            tableList.DataSource = TableDAO.Instance.loadTableList();
+            tableList.DataSource = tbBLL.getListTable();
+        }
+
+        void loadListArea()
+        {
+            areaList.DataSource = arBLL.getListArea();
         }
 
         void loadListAccount()
         {
-            accountList.DataSource = AccountDAO.Instance.getListAccount();
+            accountList.DataSource = accBLL.getListAccount();
         }
 
         void loadCategoryIntoCB(ComboBox cb)
         {
-            cb.DataSource = CategoryDAO.Instance.getListCategory();
+            cb.DataSource = cgBLL.getListCategory();
+            cb.DisplayMember = "name";
+        }
+
+        void loadAreaIntoCB(ComboBox cb)
+        {
+            cb.DataSource = arBLL.getListArea();
             cb.DisplayMember = "name";
         }
 
@@ -77,6 +107,7 @@ namespace coffee_shop
         {
             cb.Items.Add("Empty");
             cb.Items.Add("Guest");
+            cb.Items.Add("Booking");
         }
 
         void loadAccountTypeIntoCB(ComboBox cb)
@@ -105,6 +136,12 @@ namespace coffee_shop
             tbCategoryName.DataBindings.Add(new Binding("Text", dgvCategory.DataSource, "name", true, DataSourceUpdateMode.Never));
         }
 
+        void addAreaBinding()
+        {
+            txtAreaID.DataBindings.Add(new Binding("Text", dgvArea.DataSource, "id", true, DataSourceUpdateMode.Never));
+            txtAreaName.DataBindings.Add(new Binding("Text", dgvArea.DataSource, "name", true, DataSourceUpdateMode.Never));
+        }
+
         void addAccountBinding()
         {
             tbAccountID.DataBindings.Add(new Binding("Text", dgvAccount.DataSource, "username", true, DataSourceUpdateMode.Never));
@@ -114,12 +151,19 @@ namespace coffee_shop
 
         List<Drink> searchDrinkByName(string name)
         {
-            List<Drink> listDrink = DrinkDAO.Instance.searchDrinkByName(name);
+            List<Drink> listDrink = drBLL.searchDrinkByName(name);
             return listDrink;
         }
         #endregion
 
         #region Events
+        private event FormClosedEventHandler formClosed;
+        public event FormClosedEventHandler FormCloed
+        {
+            add { formClosed += value; }
+            remove { formClosed -= value; }
+        }
+
         private void btnBillShow_Click(object sender, EventArgs e)
         {
             loadListBillByDate(dtpFrom.Value, dtpTo.Value);
@@ -130,7 +174,7 @@ namespace coffee_shop
             try
             {
                 int id = (int)dgvDrink.SelectedCells[0].OwningRow.Cells["idcategory"].Value;
-                Category category = CategoryDAO.Instance.getListCategoryByID(id);
+                Category category = cgBLL.getListCategoryByID(id);
                 cbDrinkCategory.SelectedItem = category;
                 int index = -1, i = 0;
                 foreach (Category item in cbDrinkCategory.Items)
@@ -147,16 +191,37 @@ namespace coffee_shop
             catch { }
         }
 
+        private void tbTableID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = (int)dgvTable.SelectedCells[0].OwningRow.Cells["idarea"].Value;
+                Area area = arBLL.getListAreaByID(id);
+                cbTableArea.SelectedItem = area;
+                int index = -1, i = 0;
+                foreach (Area item in cbTableArea.Items)
+                {
+                    if (item.ID == area.ID)
+                    {
+                        index = i;
+                        break;
+                    }
+                    i++;
+                }
+                cbTableArea.SelectedIndex = index;
+            }
+            catch { }
+        }
+
         private void btnDrinkAdd_Click(object sender, EventArgs e)
         {
             int idCategory = (cbDrinkCategory.SelectedItem as Category).ID;
             string name = txtDrink.Text;
             float price = (float)nudDrinkPrice.Value;
-            if (DrinkDAO.Instance.insertDrink(idCategory, name, price))
+            if (drBLL.insertDrink(idCategory, name, price))
             {
                 MessageBox.Show("Add drink complete!");
                 loadListDrink();
-                if (insertDrink != null) insertDrink(this, new EventArgs());
             }
             else MessageBox.Show("Fail to add drink!");
         }
@@ -167,11 +232,10 @@ namespace coffee_shop
             string name = txtDrink.Text;
             float price = (float)nudDrinkPrice.Value;
             int id = Convert.ToInt32(txtDrinkID.Text);
-            if (DrinkDAO.Instance.updateDrink(id, idCategory, name, price))
+            if (drBLL.updateDrink(id, idCategory, name, price))
             {
                 MessageBox.Show("Update drink complete!");
                 loadListDrink();
-                if (updateDrink != null) updateDrink(this, new EventArgs());
             }
             else MessageBox.Show("Fail to update drink!");
         }
@@ -179,44 +243,22 @@ namespace coffee_shop
         private void btnDrinkRemove_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txtDrinkID.Text);
-            if (DrinkDAO.Instance.deleteDrink(id))
+            if (drBLL.deleteDrink(id))
             {
                 MessageBox.Show("Remove drink complete!");
                 loadListDrink();
-                if (deleteDrink != null) deleteDrink(this, new EventArgs());
             }
             else MessageBox.Show("Fail to remove drink!");
-        }
-
-        private event EventHandler insertDrink;
-        public event EventHandler InsertDrink
-        {
-            add { insertDrink += value; }
-            remove { insertDrink -= value; }
-        }
-
-        private event EventHandler updateDrink;
-        public event EventHandler UpdateDrink
-        {
-            add { updateDrink += value; }
-            remove { updateDrink -= value; }
-        }
-
-        private event EventHandler deleteDrink;
-        public event EventHandler DeleteDrink
-        {
-            add { deleteDrink += value; }
-            remove { deleteDrink -= value; }
         }
 
         private void btnCategoryAdd_Click(object sender, EventArgs e)
         {
             string name = tbCategoryName.Text;
-            if (CategoryDAO.Instance.insertCategory(name))
+            if (cgBLL.insertCategory(name))
             {
                 MessageBox.Show("Add category complete!");
                 loadListCategory();
-                if (insertCategory != null) insertCategory(this, new EventArgs());
+                loadCategoryIntoCB(cbDrinkCategory);
             }
             else MessageBox.Show("Fail to add category!");
         }
@@ -225,11 +267,12 @@ namespace coffee_shop
         {
             int id = Convert.ToInt32(tbCategoryID.Text);
             string name = tbCategoryName.Text;
-            if (CategoryDAO.Instance.updateCategory(id, name))
+            if (cgBLL.updateCategory(id, name))
             {
                 MessageBox.Show("Update category complete!");
                 loadListCategory();
-                if (updateCategory != null) updateCategory(this, new EventArgs());
+                loadCategoryIntoCB(cbDrinkCategory);
+                loadListDrink();
             }
             else MessageBox.Show("Fail to update category!");
         }
@@ -237,44 +280,24 @@ namespace coffee_shop
         private void btnCategoryRemove_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(tbCategoryID.Text);
-            if (CategoryDAO.Instance.deleteCategory(id))
+            if (cgBLL.deleteCategory(id))
             {
                 MessageBox.Show("Remove category complete!");
                 loadListCategory();
-                if (deleteCategory != null) deleteCategory(this, new EventArgs());
+                loadCategoryIntoCB(cbDrinkCategory);
+                loadListDrink();
             }
             else MessageBox.Show("Fail to remove category!");
         }
 
-        private event EventHandler insertCategory;
-        public event EventHandler InsertCategory
-        {
-            add { insertCategory += value; }
-            remove { insertCategory -= value; }
-        }
-
-        private event EventHandler updateCategory;
-        public event EventHandler UpdateCategory
-        {
-            add { updateCategory += value; }
-            remove { updateCategory -= value; }
-        }
-
-        private event EventHandler deleteCategory;
-        public event EventHandler DeleteCategory
-        {
-            add { deleteCategory += value; }
-            remove { deleteCategory -= value; }
-        }
-
         private void btnTableAdd_Click(object sender, EventArgs e)
         {
+            int idarea = (cbTableArea.SelectedItem as Area).ID;
             string name = tbTableName.Text;
-            if (TableDAO.Instance.insertTable(name))
+            if (tbBLL.insertTable(name, idarea))
             {
                 MessageBox.Show("Add table complete!");
                 loadListTable();
-                if (insertTable != null) insertTable(this, new EventArgs());
             }
             else MessageBox.Show("Fail to add table!");
         }
@@ -284,11 +307,11 @@ namespace coffee_shop
             int id = Convert.ToInt32(tbTableID.Text);
             string name = tbTableName.Text;
             string status = cbTableStatus.Text;
-            if (TableDAO.Instance.updateTable(id, name, status))
+            int idarea = (cbTableArea.SelectedItem as Area).ID;
+            if (tbBLL.updateTable(id, name, status, idarea))
             {
                 MessageBox.Show("Update table complete!");
                 loadListTable();
-                if (updateTable != null) updateTable(this, new EventArgs());
             }
             else MessageBox.Show("Fail to update table!");
         }
@@ -296,34 +319,53 @@ namespace coffee_shop
         private void btnTableRemove_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(tbTableID.Text);
-            if (TableDAO.Instance.removeTable(id))
+            if (tbBLL.removeTable(id))
             {
                 MessageBox.Show("Remove table complete!");
                 loadListTable();
-                if (updateTable != null) updateTable(this, new EventArgs());
             }
             else MessageBox.Show("Fail to update table!");
         }
 
-        private event EventHandler insertTable;
-        public event EventHandler InsertTable
+        private void btnAreaAdd_Click(object sender, EventArgs e)
         {
-            add { insertTable += value; }
-            remove { insertTable -= value; }
+            int id = Convert.ToInt32(txtAreaID.Text);
+            string name = txtAreaName.Text;
+            if (arBLL.insertArea(name))
+            {
+                MessageBox.Show("Add area complete!");
+                loadListArea();
+                loadAreaIntoCB(cbTableArea);
+                loadListTable();
+            }
+            else MessageBox.Show("Fail to add area!");
         }
 
-        private event EventHandler updateTable;
-        public event EventHandler UpdateTable
+        private void btAreaRemove_Click(object sender, EventArgs e)
         {
-            add { updateTable += value; }
-            remove { updateTable -= value; }
+            int id = Convert.ToInt32(txtAreaID.Text);
+            if (arBLL.deleteArea(id))
+            {
+                MessageBox.Show("Remove area complete!");
+                loadListArea();
+                loadAreaIntoCB(cbTableArea);
+                loadListTable();
+            }
+            else MessageBox.Show("Fail to remove area!");
         }
 
-        private event EventHandler deleteTable;
-        public event EventHandler DeleteTable
+        private void btnAreaUpdate_Click(object sender, EventArgs e)
         {
-            add { deleteTable += value; }
-            remove { deleteTable -= value; }
+            int id = Convert.ToInt32(txtAreaID.Text);
+            string name = txtAreaName.Text;
+            if (arBLL.updateArea(id, name))
+            {
+                MessageBox.Show("Update area complete!");
+                loadListArea();
+                loadAreaIntoCB(cbTableArea);
+                loadListTable();
+            }
+            else MessageBox.Show("Fail to update area!");
         }
 
         private void btnDrinkFind_Click(object sender, EventArgs e)
@@ -341,7 +383,7 @@ namespace coffee_shop
                 int type = new int();
                 if (typeName == "admin") type = 1;
                 else type = 0;
-                if (AccountDAO.Instance.insertAccount(userName, displayName, type, typeName))
+                if (accBLL.insertAccount(userName, displayName, type, typeName))
                 {
                     MessageBox.Show("Add account complete!");
                     loadListAccount();
@@ -362,7 +404,7 @@ namespace coffee_shop
             int type = new int();
             if (typeName == "admin") type = 1;
             else type = 0;
-            if (AccountDAO.Instance.updateAccount(userName, displayName, type, typeName))
+            if (accBLL.updateAccount(userName, displayName, type, typeName))
             {
                 MessageBox.Show("Update account complete!");
                 loadListAccount();
@@ -380,7 +422,7 @@ namespace coffee_shop
             }
             else
             {
-                if (AccountDAO.Instance.deleteAccount(userName))
+                if (accBLL.deleteAccount(userName))
                 {
                     MessageBox.Show("Remove account complete!");
                     loadListAccount();
@@ -392,7 +434,7 @@ namespace coffee_shop
         private void btnAccountResetPassword_Click(object sender, EventArgs e)
         {
             string userName = tbAccountID.Text;
-            if (AccountDAO.Instance.resetPasswordAccount(userName))
+            if (accBLL.resetPasswordAccount(userName))
             {
                 MessageBox.Show("Reset password complete!");
                 loadListAccount();
